@@ -4,11 +4,11 @@
     <title>bootstrap-switch用法及配置</title>
     <url>/2018/05/04/bootstrap-switch/</url>
     <content><![CDATA[<h1 id="Bootstrap-switch使用方法"><a href="#Bootstrap-switch使用方法" class="headerlink" title="Bootstrap-switch使用方法"></a>Bootstrap-switch使用方法</h1><p>bootstrap切换开关控件</p>
-<p><img src="/public/img/off.png" alt="bootstrap-switch"></p>
+<p><img src="/themes/obsidian/source/img/off.png" alt="bootstrap-switch"></p>
 <h2 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h2><pre><code class="&lt;link">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;assets/bootstrap-switch/bootstrap-switch.css&quot;&gt;
 &lt;script type=&quot;text/javascript&quot; src=&quot;assets/jquery.min.js&quot;&gt;&lt;/script&gt;
 &lt;script type=&quot;text/javascript&quot; src=&quot;assets/bootstrap-switch/bootstrap-switch.js&quot;&gt;&lt;/script&gt;</code></pre>
-<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p><img src="/public/img/changebtn.png" alt="切换按钮"></p>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p><img src="/themes/obsidian/source/img/changebtn.jpg" alt="切换按钮"></p>
 <h3 id="用法实例"><a href="#用法实例" class="headerlink" title="用法实例"></a>用法实例</h3><p>HTML</p>
 <pre><code class="&lt;div">  &lt;button id=&quot;oper-btn-sw&quot; class=&quot;btn btn-default&quot;&gt;切换状态&lt;/button&gt;
 &lt;/div&gt;
