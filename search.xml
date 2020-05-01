@@ -1,24 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>test</title>
-    <url>/2020/04/30/test/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;</code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy</code></pre>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+    <title>bootstrap-switch用法及配置</title>
+    <url>/2018/05/04/bootstrap-switch/</url>
+    <content><![CDATA[<h1 id="Bootstrap-switch使用方法"><a href="#Bootstrap-switch使用方法" class="headerlink" title="Bootstrap-switch使用方法"></a>Bootstrap-switch使用方法</h1><p>bootstrap切换开关控件</p>
+<p><img src="https://img-blog.csdn.net/20180504154426158?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3VzZXJoYW4xMjM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="bootstrap-switch"></p>
+<h2 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h2><pre><code class="&lt;link">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;assets/bootstrap-switch/bootstrap-switch.css&quot;&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;assets/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;assets/bootstrap-switch/bootstrap-switch.js&quot;&gt;&lt;/script&gt;</code></pre>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p><img src="https://img-blog.csdn.net/2018050415503059?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3VzZXJoYW4xMjM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
+<h3 id="用法实例"><a href="#用法实例" class="headerlink" title="用法实例"></a>用法实例</h3><p>HTML</p>
+<pre><code class="&lt;div">  &lt;button id=&quot;oper-btn-sw&quot; class=&quot;btn btn-default&quot;&gt;切换状态&lt;/button&gt;
+&lt;/div&gt;
+&lt;div id=&quot;sw-content&quot;&gt;
+    &lt;input type=&quot;checkbox&quot; class=&quot;make-switch&quot; checked data-on-color=&quot;default&quot; data-off-color=&quot;primary&quot;&gt;
+  &lt;/div&gt;</code></pre>
+<blockquote>
+<p>data-on-color= “default” 按钮开时的颜色<br>data-off-color= “primary” 按钮关时的颜色<br>type= “checkbox” 类型<br>class= “make-switch” </p>
+</blockquote>
+<h3 id="JS-功能配置"><a href="#JS-功能配置" class="headerlink" title="JS (功能配置)"></a>JS (功能配置)</h3><pre><code class="&lt;script">        $(document).ready(function(){
+            //基本初始化
+            $(&#39;#sw-content input&#39;).bootstrapSwitch();
+
+            //手动设置按钮状态
+            $(&#39;#sw-content input&#39;).bootstrapSwitch(&#39;state&#39;,false);
+
+            //点击按钮切换 switch
+            $(&#39;#oper-btn-sw&#39;).click(function(){
+                $(&#39;#sw-content input&#39;).bootstrapSwitch(&#39;toggleState&#39;);
+            });
+
+            //点击触发事件，监听按钮状态
+            $(&#39;#sw-content input&#39;).on(&#39;switchChange.bootstrapSwitch&#39;,function(event,state){
+
+            //内置对象、内置属性
+            console.log(event);    
+
+            //获取状态
+            console.log(state); 
+        });     
+        })
+    &lt;/script&gt;</code></pre>
+<p>  梨子一</p>
 ]]></content>
       <categories>
-        <category>Category1</category>
-        <category>Category2</category>
+        <category>bootstrap</category>
       </categories>
       <tags>
-        <tag>test</tag>
+        <tag>bootstrap-switch</tag>
       </tags>
   </entry>
 </search>
