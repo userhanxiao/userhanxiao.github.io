@@ -289,9 +289,9 @@ var Obsidian = {
     if ($('#vcomments').length) {
       initValine();
     }
-    if ($('span[id^="busuanzi_"]').length) {
-      initialBusuanzi();
-    }
+    // if ($('span[id^="busuanzi_value_site_pv"]').length) {
+    //   initialBusuanzi();
+    // }
     reprocessMathJax();
     buildImgCaption();
     utiliseBgColor('article');
