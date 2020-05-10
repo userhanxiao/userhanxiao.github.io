@@ -1,87 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>jquery-multiselect用法实例</title>
-    <url>/2018/05/08/jquery-multiselect/</url>
-    <content><![CDATA[<h1 id="Jquery-multiselect插件使用文档"><a href="#Jquery-multiselect插件使用文档" class="headerlink" title="Jquery-multiselect插件使用文档"></a>Jquery-multiselect插件使用文档</h1><h2 id="组件介绍"><a href="#组件介绍" class="headerlink" title="组件介绍"></a>组件介绍</h2><blockquote>
-<p>替换标准的<code>&lt;select&gt;</code>(含有multiple属性的select标签)的一套交互友好的组件。</p>
+    <title>bootstrap-switch用法及配置</title>
+    <url>/2018/05/04/bootstrap-switch/</url>
+    <content><![CDATA[<h1 id="Bootstrap-switch使用方法"><a href="#Bootstrap-switch使用方法" class="headerlink" title="Bootstrap-switch使用方法"></a>Bootstrap-switch使用方法</h1><p>bootstrap切换开关控件</p>
+<p><img src="/img/off.png" alt="bootstrap-switch">  </p>
+<h2 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h2><pre><code class="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;assets/bootstrap/bootstrap.min.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;assets/bootstrap-switch/bootstrap-switch.css&quot;&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;assets/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;assets/bootstrap-switch/bootstrap-switch.js&quot;&gt;&lt;/script&gt;</code></pre>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p><img src="/img/changebtn.png" alt="切换按钮">  </p>
+<h3 id="用法实例"><a href="#用法实例" class="headerlink" title="用法实例"></a>用法实例</h3><p>HTML</p>
+<pre><code class="html">&lt;div id=&quot;operatebar&quot;&gt;
+  &lt;button id=&quot;oper-btn-sw&quot; class=&quot;btn btn-default&quot;&gt;切换状态&lt;/button&gt;
+&lt;/div&gt;
+&lt;div id=&quot;sw-content&quot;&gt;
+  &lt;input type=&quot;checkbox&quot; class=&quot;make-switch&quot; checked data-on-color=&quot;default&quot; data-off-color=&quot;primary&quot;&gt;
+&lt;/div&gt;</code></pre>
+<blockquote>
+<p>data-on-color= “default” 按钮开时的颜色<br>data-off-color= “primary” 按钮关时的颜色<br>type= “checkbox” 类型<br>class= “make-switch” </p>
 </blockquote>
-<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ul>
-<li>支持键盘操作</li>
-<li>提供一些回调函数</li>
-<li>CSS可完全定制化</li>
-<li>依赖jquery1.8以上版本  </li>
-</ul>
-<h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><pre><code class="html">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;multiselect&lt;/title&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;!-- 引入CSS --&gt;
-    &lt;link href=&quot;assets/jquery-multiselect/multi-select.css&quot; media=&quot;screen&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
-&lt;/head&gt;
-&lt;body&gt;    
-    &lt;!-- 定义select及选择器 --&gt;
-    &lt;select multiple=&quot;multiple&quot; id=&quot;my-select&quot; name=&quot;my-select&quot;&gt;
-        &lt;option value=&#39;a&#39;&gt;a&lt;/option&gt;
-        &lt;option value=&#39;b&#39;&gt;b&lt;/option&gt;
-        &lt;option value=&#39;c&#39;&gt;c&lt;/option&gt;
-        &lt;option value=&#39;d&#39;&gt;d&lt;/option&gt;
-        &lt;option value=&#39;e&#39;&gt;e&lt;/option&gt;
-        &lt;option value=&#39;f&#39;&gt;f&lt;/option&gt;
-        &lt;option value=&#39;g&#39;&gt;g&lt;/option&gt;
-        &lt;option value=&#39;h&#39;&gt;h&lt;/option&gt;
-        &lt;option value=&#39;i&#39;&gt;i&lt;/option&gt;
-        &lt;option value=&#39;j&#39;&gt;j&lt;/option&gt;
-    &lt;/select&gt;
-    &lt;/div&gt;
-    &lt;!-- 引入jquery，版本不低于1.8 --&gt;
-    &lt;script type=&quot;text/javascript&quot; src=&quot;assets/jquery.min.js&quot;&gt;&lt;/script&gt;
-    &lt;!-- 引入插件核心JS --&gt;
-    &lt;script type=&quot;text/javascript&quot; src=&quot;assets/jquery-multiselect/jquery.multi-select.js&quot;&gt;&lt;/script&gt;
-    &lt;script type=&quot;text/javascript&quot;&gt;
-        $(&#39;#my-select&#39;).multiSelect(); //初始化基本用法
-    &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-<h2 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h2><p><strong>afterInit</strong><br>类型:<code>function</code><br>默认值：<code>function(container){}</code><br>初始化multiSelect后执行的方法。</p>
-<p><strong>afterSelect</strong><br>类型:<code>function</code><br>默认值：<code>function(values){}</code><br>选中选项后执行的方法。</p>
-<p><strong>afterDeselect</strong><br>类型:<code>function</code><br>默认值：<code>function(values){}</code><br>取消选中后执行的方法。</p>
-<p><strong>selectableHeader</strong><br>类型：<code>HTML/Text</code><br>默认值：<code>null</code><br>自定义可选区域header。</p>
-<p><strong>selectableFooter</strong><br>类型：<code>HTML/Text</code><br>默认值：<code>null</code><br>自定义可选区域footer。</p>
-<p><strong>selectionHeader</strong><br>类型：<code>HTML/Text</code><br>默认值：<code>null</code><br>自定义已选区域header。</p>
-<p><strong>selectionFooter</strong><br>类型：<code>HTML/Text</code><br>默认值：<code>null</code><br>自定义已选区域footer。</p>
-<p><strong>disabledClass</strong><br>类型：<code>String</code><br>默认值： <code>disabled</code><br>禁用状态选项的css class。</p>
-<p><strong>selectableOptgroup</strong><br>类型：<code>Boolean</code><br>默认值：<code>false</code><br>为true时点击optgroup时等同于选中所有子选项。</p>
-<p><strong>keepOrder</strong><br>类型：<code>Boolean</code><br>默认值：<code>false</code><br>为true时已选区域的选项根据选中顺序排序。</p>
-<p><strong>dblClick</strong><br>类型：<code>Boolean</code><br>默认值：<code>false</code><br>为true时双击才会选中选项。</p>
-<p><strong>cssClass</strong><br>类型：<code>String</code><br>默认值：<code>&#39;&#39;</code><br>在multiselect容器（.ms-container）上添加自定义css class。</p>
-<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p><strong>.multiSelect(options)</strong><br>初始化multi-select多选插件。<br><code>$(&#39;#my-select&#39;).multiSelect({});</code></p>
-<p><strong>.multiSelect(‘select’, String|Array)</strong><br>选中匹配值的一项或多项。<br><code>$(&#39;#my-select&#39;).multiSelect(&#39;select&#39;, &#39;选项1&#39;);</code><br><code>$(&#39;#my-select&#39;).multiSelect(&#39;select&#39;,[&#39;选项1&#39;, &#39;选项3&#39;]);</code></p>
-<p><strong>.multiSelect(‘deselect’, String|Array)</strong><br>取消选中匹配值的一项或多项。<br><code>$(&#39;#my-select&#39;).multiSelect(&#39;deselect&#39;, &#39;选项2&#39;);</code><br><code>$(&#39;#my-select&#39;).multiSelect(&#39;deselect&#39;, [&#39;选项    2&#39;, &#39;选项4&#39;]);</code></p>
-<p><strong>.multiSelect(‘select_all’)</strong><br>选中所有选项。<br><code>$(&#39;#my-select&#39;).multiSelect(&#39;select_all&#39;);</code></p>
-<p><strong>.multiSelect(‘deselect_all’)</strong><br>取消选中所有选项。<br><code>$(&#39;#my-select&#39;).multiSelect(&#39;deselect_all&#39;);</code></p>
-<p><strong>.multiSelect(‘refresh’)</strong><br>刷新当前multi-select。<br><code>$(&#39;#my-select&#39;).multiSelect(&#39;refresh&#39;);</code></p>
-<p><strong>.multiSelect(‘addOption’, Hash)</strong><br>以键值对形式动态添加选项到multi-select。  </p>
-<p><img src="/img/keyvalue.png" alt="key-value">  </p>
-<p><code>$(&#39;#my-select&#39;).multiSelect(&#39;addOption&#39;,{value: &#39;test&#39;,text: &#39;test&#39;,index: 0,nested: &#39;&#39;optgroup_label})</code>  </p>
-<h2 id="键盘操作"><a href="#键盘操作" class="headerlink" title="键盘操作"></a>键盘操作</h2><p><img src="/img/keyboard.png" alt="键盘键">  </p>
-<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p><img src="/img/shili.png" alt="实例">  </p>
-<p>引入CSS<br><code>&lt;link href=&quot;assets/jquery-multiselect/multi-select.css&quot; media=&quot;screen&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;</code><br>引入JS<br><code>&lt;script type=&quot;text/javascript&quot; src=&quot;assets/jquery.min.js&quot;&gt;&lt;/script&gt;</code><br><code>&lt;script type=&quot;text/javascript&quot; src=&quot;assets/jquery-multiselect/jquery.multi-select.js&quot;&gt;&lt;/script&gt;</code></p>
-<p>HTML</p>
-<p><img src="/img/mulitSelectHtml1.png" alt="html">  </p>
-<p><img src="/img/mulitSelect_js_yufa.png" alt="js语法">  </p>
-<p><img src="/img/mulitSelect_js_yufa_02.png" alt="js语法02">  </p>
-<p><img src="/img/mulitSelect_js_yufa_03.png" alt="js语法03">  </p>
-<p><img src="/img/mulitSelect_js_yufa_04.png" alt="js语法04">  </p>
-<p><img src="/img/mulitSelect_js_yufa_05.png" alt="js语法05">  </p>
-<p><img src="/img/mulitSelect_js_yufa_06.png" alt="js语法06"></p>
+<h3 id="JS-功能配置"><a href="#JS-功能配置" class="headerlink" title="JS (功能配置)"></a>JS (功能配置)</h3><pre><code class="javascript">&lt;script type=&quot;text/javascript&quot;&gt;
+  $(document).ready(function(){
+    //基本初始化
+    $(&#39;#sw-content input&#39;).bootstrapSwitch();
+
+    //手动设置按钮状态
+    $(&#39;#sw-content input&#39;).bootstrapSwitch(&#39;state&#39;,false);
+
+    //点击按钮切换 switch
+    $(&#39;#oper-btn-sw&#39;).click(function(){
+        $(&#39;#sw-content input&#39;).bootstrapSwitch(&#39;toggleState&#39;);
+    });
+
+    //点击触发事件，监听按钮状态
+    $(&#39;#sw-content input&#39;).on(&#39;switchChange.bootstrapSwitch&#39;,function(event,state){
+
+    //内置对象、内置属性
+    console.log(event);    
+
+    //获取状态
+    console.log(state); 
+    });     
+  })
+&lt;/script&gt;</code></pre>
+<p>梨子一</p>
 ]]></content>
       <categories>
-        <category>jquery</category>
+        <category>bootstrap</category>
       </categories>
       <tags>
-        <tag>jquery-multiselect</tag>
+        <tag>bootstrap-switch</tag>
       </tags>
   </entry>
   <entry>
@@ -262,56 +231,87 @@ export default {
       </tags>
   </entry>
   <entry>
-    <title>bootstrap-switch用法及配置</title>
-    <url>/2018/05/04/bootstrap-switch/</url>
-    <content><![CDATA[<h1 id="Bootstrap-switch使用方法"><a href="#Bootstrap-switch使用方法" class="headerlink" title="Bootstrap-switch使用方法"></a>Bootstrap-switch使用方法</h1><p>bootstrap切换开关控件</p>
-<p><img src="/img/off.png" alt="bootstrap-switch">  </p>
-<h2 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h2><pre><code class="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;assets/bootstrap/bootstrap.min.css&quot;&gt;
-&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;assets/bootstrap-switch/bootstrap-switch.css&quot;&gt;
-&lt;script type=&quot;text/javascript&quot; src=&quot;assets/jquery.min.js&quot;&gt;&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot; src=&quot;assets/bootstrap-switch/bootstrap-switch.js&quot;&gt;&lt;/script&gt;</code></pre>
-<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p><img src="/img/changebtn.png" alt="切换按钮">  </p>
-<h3 id="用法实例"><a href="#用法实例" class="headerlink" title="用法实例"></a>用法实例</h3><p>HTML</p>
-<pre><code class="html">&lt;div id=&quot;operatebar&quot;&gt;
-  &lt;button id=&quot;oper-btn-sw&quot; class=&quot;btn btn-default&quot;&gt;切换状态&lt;/button&gt;
-&lt;/div&gt;
-&lt;div id=&quot;sw-content&quot;&gt;
-  &lt;input type=&quot;checkbox&quot; class=&quot;make-switch&quot; checked data-on-color=&quot;default&quot; data-off-color=&quot;primary&quot;&gt;
-&lt;/div&gt;</code></pre>
-<blockquote>
-<p>data-on-color= “default” 按钮开时的颜色<br>data-off-color= “primary” 按钮关时的颜色<br>type= “checkbox” 类型<br>class= “make-switch” </p>
+    <title>jquery-multiselect用法实例</title>
+    <url>/2018/05/08/jquery-multiselect/</url>
+    <content><![CDATA[<h1 id="Jquery-multiselect插件使用文档"><a href="#Jquery-multiselect插件使用文档" class="headerlink" title="Jquery-multiselect插件使用文档"></a>Jquery-multiselect插件使用文档</h1><h2 id="组件介绍"><a href="#组件介绍" class="headerlink" title="组件介绍"></a>组件介绍</h2><blockquote>
+<p>替换标准的<code>&lt;select&gt;</code>(含有multiple属性的select标签)的一套交互友好的组件。</p>
 </blockquote>
-<h3 id="JS-功能配置"><a href="#JS-功能配置" class="headerlink" title="JS (功能配置)"></a>JS (功能配置)</h3><pre><code class="javascript">&lt;script type=&quot;text/javascript&quot;&gt;
-  $(document).ready(function(){
-    //基本初始化
-    $(&#39;#sw-content input&#39;).bootstrapSwitch();
-
-    //手动设置按钮状态
-    $(&#39;#sw-content input&#39;).bootstrapSwitch(&#39;state&#39;,false);
-
-    //点击按钮切换 switch
-    $(&#39;#oper-btn-sw&#39;).click(function(){
-        $(&#39;#sw-content input&#39;).bootstrapSwitch(&#39;toggleState&#39;);
-    });
-
-    //点击触发事件，监听按钮状态
-    $(&#39;#sw-content input&#39;).on(&#39;switchChange.bootstrapSwitch&#39;,function(event,state){
-
-    //内置对象、内置属性
-    console.log(event);    
-
-    //获取状态
-    console.log(state); 
-    });     
-  })
-&lt;/script&gt;</code></pre>
-<p>梨子一</p>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ul>
+<li>支持键盘操作</li>
+<li>提供一些回调函数</li>
+<li>CSS可完全定制化</li>
+<li>依赖jquery1.8以上版本  </li>
+</ul>
+<h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;multiselect&lt;/title&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;!-- 引入CSS --&gt;
+    &lt;link href=&quot;assets/jquery-multiselect/multi-select.css&quot; media=&quot;screen&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;    
+    &lt;!-- 定义select及选择器 --&gt;
+    &lt;select multiple=&quot;multiple&quot; id=&quot;my-select&quot; name=&quot;my-select&quot;&gt;
+        &lt;option value=&#39;a&#39;&gt;a&lt;/option&gt;
+        &lt;option value=&#39;b&#39;&gt;b&lt;/option&gt;
+        &lt;option value=&#39;c&#39;&gt;c&lt;/option&gt;
+        &lt;option value=&#39;d&#39;&gt;d&lt;/option&gt;
+        &lt;option value=&#39;e&#39;&gt;e&lt;/option&gt;
+        &lt;option value=&#39;f&#39;&gt;f&lt;/option&gt;
+        &lt;option value=&#39;g&#39;&gt;g&lt;/option&gt;
+        &lt;option value=&#39;h&#39;&gt;h&lt;/option&gt;
+        &lt;option value=&#39;i&#39;&gt;i&lt;/option&gt;
+        &lt;option value=&#39;j&#39;&gt;j&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;/div&gt;
+    &lt;!-- 引入jquery，版本不低于1.8 --&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;assets/jquery.min.js&quot;&gt;&lt;/script&gt;
+    &lt;!-- 引入插件核心JS --&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;assets/jquery-multiselect/jquery.multi-select.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        $(&#39;#my-select&#39;).multiSelect(); //初始化基本用法
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<h2 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h2><p><strong>afterInit</strong><br>类型:<code>function</code><br>默认值：<code>function(container){}</code><br>初始化multiSelect后执行的方法。</p>
+<p><strong>afterSelect</strong><br>类型:<code>function</code><br>默认值：<code>function(values){}</code><br>选中选项后执行的方法。</p>
+<p><strong>afterDeselect</strong><br>类型:<code>function</code><br>默认值：<code>function(values){}</code><br>取消选中后执行的方法。</p>
+<p><strong>selectableHeader</strong><br>类型：<code>HTML/Text</code><br>默认值：<code>null</code><br>自定义可选区域header。</p>
+<p><strong>selectableFooter</strong><br>类型：<code>HTML/Text</code><br>默认值：<code>null</code><br>自定义可选区域footer。</p>
+<p><strong>selectionHeader</strong><br>类型：<code>HTML/Text</code><br>默认值：<code>null</code><br>自定义已选区域header。</p>
+<p><strong>selectionFooter</strong><br>类型：<code>HTML/Text</code><br>默认值：<code>null</code><br>自定义已选区域footer。</p>
+<p><strong>disabledClass</strong><br>类型：<code>String</code><br>默认值： <code>disabled</code><br>禁用状态选项的css class。</p>
+<p><strong>selectableOptgroup</strong><br>类型：<code>Boolean</code><br>默认值：<code>false</code><br>为true时点击optgroup时等同于选中所有子选项。</p>
+<p><strong>keepOrder</strong><br>类型：<code>Boolean</code><br>默认值：<code>false</code><br>为true时已选区域的选项根据选中顺序排序。</p>
+<p><strong>dblClick</strong><br>类型：<code>Boolean</code><br>默认值：<code>false</code><br>为true时双击才会选中选项。</p>
+<p><strong>cssClass</strong><br>类型：<code>String</code><br>默认值：<code>&#39;&#39;</code><br>在multiselect容器（.ms-container）上添加自定义css class。</p>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p><strong>.multiSelect(options)</strong><br>初始化multi-select多选插件。<br><code>$(&#39;#my-select&#39;).multiSelect({});</code></p>
+<p><strong>.multiSelect(‘select’, String|Array)</strong><br>选中匹配值的一项或多项。<br><code>$(&#39;#my-select&#39;).multiSelect(&#39;select&#39;, &#39;选项1&#39;);</code><br><code>$(&#39;#my-select&#39;).multiSelect(&#39;select&#39;,[&#39;选项1&#39;, &#39;选项3&#39;]);</code></p>
+<p><strong>.multiSelect(‘deselect’, String|Array)</strong><br>取消选中匹配值的一项或多项。<br><code>$(&#39;#my-select&#39;).multiSelect(&#39;deselect&#39;, &#39;选项2&#39;);</code><br><code>$(&#39;#my-select&#39;).multiSelect(&#39;deselect&#39;, [&#39;选项    2&#39;, &#39;选项4&#39;]);</code></p>
+<p><strong>.multiSelect(‘select_all’)</strong><br>选中所有选项。<br><code>$(&#39;#my-select&#39;).multiSelect(&#39;select_all&#39;);</code></p>
+<p><strong>.multiSelect(‘deselect_all’)</strong><br>取消选中所有选项。<br><code>$(&#39;#my-select&#39;).multiSelect(&#39;deselect_all&#39;);</code></p>
+<p><strong>.multiSelect(‘refresh’)</strong><br>刷新当前multi-select。<br><code>$(&#39;#my-select&#39;).multiSelect(&#39;refresh&#39;);</code></p>
+<p><strong>.multiSelect(‘addOption’, Hash)</strong><br>以键值对形式动态添加选项到multi-select。  </p>
+<p><img src="/img/keyvalue.png" alt="key-value">  </p>
+<p><code>$(&#39;#my-select&#39;).multiSelect(&#39;addOption&#39;,{value: &#39;test&#39;,text: &#39;test&#39;,index: 0,nested: &#39;&#39;optgroup_label})</code>  </p>
+<h2 id="键盘操作"><a href="#键盘操作" class="headerlink" title="键盘操作"></a>键盘操作</h2><p><img src="/img/keyboard.png" alt="键盘键">  </p>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p><img src="/img/shili.png" alt="实例">  </p>
+<p>引入CSS<br><code>&lt;link href=&quot;assets/jquery-multiselect/multi-select.css&quot; media=&quot;screen&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;</code><br>引入JS<br><code>&lt;script type=&quot;text/javascript&quot; src=&quot;assets/jquery.min.js&quot;&gt;&lt;/script&gt;</code><br><code>&lt;script type=&quot;text/javascript&quot; src=&quot;assets/jquery-multiselect/jquery.multi-select.js&quot;&gt;&lt;/script&gt;</code></p>
+<p>HTML</p>
+<p><img src="/img/mulitSelectHtml1.png" alt="html">  </p>
+<p><img src="/img/mulitSelect_js_yufa.png" alt="js语法">  </p>
+<p><img src="/img/mulitSelect_js_yufa_02.png" alt="js语法02">  </p>
+<p><img src="/img/mulitSelect_js_yufa_03.png" alt="js语法03">  </p>
+<p><img src="/img/mulitSelect_js_yufa_04.png" alt="js语法04">  </p>
+<p><img src="/img/mulitSelect_js_yufa_05.png" alt="js语法05">  </p>
+<p><img src="/img/mulitSelect_js_yufa_06.png" alt="js语法06"></p>
 ]]></content>
       <categories>
-        <category>bootstrap</category>
+        <category>jquery</category>
       </categories>
       <tags>
-        <tag>bootstrap-switch</tag>
+        <tag>jquery-multiselect</tag>
       </tags>
   </entry>
   <entry>
