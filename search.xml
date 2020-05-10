@@ -54,6 +54,124 @@
       </tags>
   </entry>
   <entry>
+    <title>JavaScript 中 call()、apply()、bind() 的用法</title>
+    <url>/2018/06/12/call-apply-bind/</url>
+    <content><![CDATA[<h1 id="JavaScript-中-call-、apply-、bind-的用法"><a href="#JavaScript-中-call-、apply-、bind-的用法" class="headerlink" title="JavaScript 中 call()、apply()、bind() 的用法"></a>JavaScript 中 call()、apply()、bind() 的用法</h1><p>其实是一个很简单的东西，认真看十分钟就从一脸懵B 到完全 理解！<br>先看明白下面： </p>
+<h2 id="例1"><a href="#例1" class="headerlink" title="例1"></a>例1</h2><p><img src="/img/call_apply_bind_1.png" alt="例1">  </p>
+<blockquote>
+<p>obj.objAge;  // 17<br>obj.myFun()  // 小张年龄 undefined</p>
+</blockquote>
+<h2 id="例2"><a href="#例2" class="headerlink" title="例2"></a>例2</h2><p><img src="/img/call_apply_bind_2.png" alt="例2"></p>
+<blockquote>
+<p>shows()  // 盲僧</p>
+</blockquote>
+<h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><p>比较一下这两者 this 的差别，第一个打印里面的 this 指向 obj，第二个全局声明的 shows() 函数 this 是 window;</p>
+<h3 id="1、call-、apply-、bind-都是用来重定义-this-这个对象的！"><a href="#1、call-、apply-、bind-都是用来重定义-this-这个对象的！" class="headerlink" title="1、call()、apply()、bind() 都是用来重定义 this 这个对象的！"></a>1、call()、apply()、bind() 都是用来重定义 this 这个对象的！</h3><p>如:<br><img src="/img/call_apply_bind_3.png" alt="图3"></p>
+<blockquote>
+<p>obj.myFun.call(db);    // 德玛年龄 99<br>obj.myFun.apply(db);　 // 德玛年龄 99<br>obj.myFun.bind(db)();  // 德玛年龄 99</p>
+</blockquote>
+<p>以上出了 bind 方法后面多了个 () 外 ，结果返回都一致！<br>由此得出结论，bind 返回的是一个新的函数，你必须调用它才会被执行。  </p>
+<h3 id="2、对比call-、bind-、-apply-传参情况下"><a href="#2、对比call-、bind-、-apply-传参情况下" class="headerlink" title="2、对比call 、bind 、 apply 传参情况下"></a>2、对比call 、bind 、 apply 传参情况下</h3><p><img src="/img/call_apply_bind_4.png" alt="图4"></p>
+<blockquote>
+<p>obj.myFun.call(db,’成都’,’上海’);　　　 // 德玛 年龄 99  来自 成都去往上海<br>obj.myFun.apply(db,[‘成都’,’上海’]);   // 德玛 年龄 99  来自 成都去往上海<br>obj.myFun.bind(db,’成都’,’上海’)();    // 德玛 年龄 99  来自 成都去往上海<br>obj.myFun.bind(db,[‘成都’,’上海’])();  // 德玛 年龄 99  来自 成都, 上海去往 undefined</p>
+</blockquote>
+<p>微妙的差距！<br>从上面四个结果不难看出:<br>call 、bind 、 apply 这三个函数的第一个参数都是 this 的指向对象，第二个参数差别就来了：<br>call 的参数是直接放进去的，第二第三第 n 个参数全都用逗号分隔，直接放到后面 <code>obj.myFun.call(db,&#39;成都&#39;, ... ,&#39;string&#39;)</code>。<br>apply 的所有参数都必须放在一个数组里面传进去 <code>obj.myFun.apply(db,[&#39;成都&#39;, ..., &#39;string&#39; ])</code>。<br>bind 除了返回是函数以外，它 的参数和 call 一样。<br>当然，三者的参数不限定是 string 类型，允许是各种类型，包括函数 、 object 等等！</p>
+<blockquote>
+<p><em>原文地址：<a href="https://www.cnblogs.com/Shd-Study/p/6560808.html" target="_blank" rel="noopener">https://www.cnblogs.com/Shd-Study/p/6560808.html</a></em></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>jquery-multiselect用法实例</title>
+    <url>/2018/05/08/jquery-multiselect/</url>
+    <content><![CDATA[<h1 id="Jquery-multiselect插件使用文档"><a href="#Jquery-multiselect插件使用文档" class="headerlink" title="Jquery-multiselect插件使用文档"></a>Jquery-multiselect插件使用文档</h1><h2 id="组件介绍"><a href="#组件介绍" class="headerlink" title="组件介绍"></a>组件介绍</h2><blockquote>
+<p>替换标准的<code>&lt;select&gt;</code>(含有multiple属性的select标签)的一套交互友好的组件。</p>
+</blockquote>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ul>
+<li>支持键盘操作</li>
+<li>提供一些回调函数</li>
+<li>CSS可完全定制化</li>
+<li>依赖jquery1.8以上版本  </li>
+</ul>
+<h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;multiselect&lt;/title&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;!-- 引入CSS --&gt;
+    &lt;link href=&quot;assets/jquery-multiselect/multi-select.css&quot; media=&quot;screen&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;    
+    &lt;!-- 定义select及选择器 --&gt;
+    &lt;select multiple=&quot;multiple&quot; id=&quot;my-select&quot; name=&quot;my-select&quot;&gt;
+        &lt;option value=&#39;a&#39;&gt;a&lt;/option&gt;
+        &lt;option value=&#39;b&#39;&gt;b&lt;/option&gt;
+        &lt;option value=&#39;c&#39;&gt;c&lt;/option&gt;
+        &lt;option value=&#39;d&#39;&gt;d&lt;/option&gt;
+        &lt;option value=&#39;e&#39;&gt;e&lt;/option&gt;
+        &lt;option value=&#39;f&#39;&gt;f&lt;/option&gt;
+        &lt;option value=&#39;g&#39;&gt;g&lt;/option&gt;
+        &lt;option value=&#39;h&#39;&gt;h&lt;/option&gt;
+        &lt;option value=&#39;i&#39;&gt;i&lt;/option&gt;
+        &lt;option value=&#39;j&#39;&gt;j&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;/div&gt;
+    &lt;!-- 引入jquery，版本不低于1.8 --&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;assets/jquery.min.js&quot;&gt;&lt;/script&gt;
+    &lt;!-- 引入插件核心JS --&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;assets/jquery-multiselect/jquery.multi-select.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        $(&#39;#my-select&#39;).multiSelect(); //初始化基本用法
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<h2 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h2><p><strong>afterInit</strong><br>类型:<code>function</code><br>默认值：<code>function(container){}</code><br>初始化multiSelect后执行的方法。</p>
+<p><strong>afterSelect</strong><br>类型:<code>function</code><br>默认值：<code>function(values){}</code><br>选中选项后执行的方法。</p>
+<p><strong>afterDeselect</strong><br>类型:<code>function</code><br>默认值：<code>function(values){}</code><br>取消选中后执行的方法。</p>
+<p><strong>selectableHeader</strong><br>类型：<code>HTML/Text</code><br>默认值：<code>null</code><br>自定义可选区域header。</p>
+<p><strong>selectableFooter</strong><br>类型：<code>HTML/Text</code><br>默认值：<code>null</code><br>自定义可选区域footer。</p>
+<p><strong>selectionHeader</strong><br>类型：<code>HTML/Text</code><br>默认值：<code>null</code><br>自定义已选区域header。</p>
+<p><strong>selectionFooter</strong><br>类型：<code>HTML/Text</code><br>默认值：<code>null</code><br>自定义已选区域footer。</p>
+<p><strong>disabledClass</strong><br>类型：<code>String</code><br>默认值： <code>disabled</code><br>禁用状态选项的css class。</p>
+<p><strong>selectableOptgroup</strong><br>类型：<code>Boolean</code><br>默认值：<code>false</code><br>为true时点击optgroup时等同于选中所有子选项。</p>
+<p><strong>keepOrder</strong><br>类型：<code>Boolean</code><br>默认值：<code>false</code><br>为true时已选区域的选项根据选中顺序排序。</p>
+<p><strong>dblClick</strong><br>类型：<code>Boolean</code><br>默认值：<code>false</code><br>为true时双击才会选中选项。</p>
+<p><strong>cssClass</strong><br>类型：<code>String</code><br>默认值：<code>&#39;&#39;</code><br>在multiselect容器（.ms-container）上添加自定义css class。</p>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p><strong>.multiSelect(options)</strong><br>初始化multi-select多选插件。<br><code>$(&#39;#my-select&#39;).multiSelect({});</code></p>
+<p><strong>.multiSelect(‘select’, String|Array)</strong><br>选中匹配值的一项或多项。<br><code>$(&#39;#my-select&#39;).multiSelect(&#39;select&#39;, &#39;选项1&#39;);</code><br><code>$(&#39;#my-select&#39;).multiSelect(&#39;select&#39;,[&#39;选项1&#39;, &#39;选项3&#39;]);</code></p>
+<p><strong>.multiSelect(‘deselect’, String|Array)</strong><br>取消选中匹配值的一项或多项。<br><code>$(&#39;#my-select&#39;).multiSelect(&#39;deselect&#39;, &#39;选项2&#39;);</code><br><code>$(&#39;#my-select&#39;).multiSelect(&#39;deselect&#39;, [&#39;选项    2&#39;, &#39;选项4&#39;]);</code></p>
+<p><strong>.multiSelect(‘select_all’)</strong><br>选中所有选项。<br><code>$(&#39;#my-select&#39;).multiSelect(&#39;select_all&#39;);</code></p>
+<p><strong>.multiSelect(‘deselect_all’)</strong><br>取消选中所有选项。<br><code>$(&#39;#my-select&#39;).multiSelect(&#39;deselect_all&#39;);</code></p>
+<p><strong>.multiSelect(‘refresh’)</strong><br>刷新当前multi-select。<br><code>$(&#39;#my-select&#39;).multiSelect(&#39;refresh&#39;);</code></p>
+<p><strong>.multiSelect(‘addOption’, Hash)</strong><br>以键值对形式动态添加选项到multi-select。  </p>
+<p><img src="/img/keyvalue.png" alt="key-value">  </p>
+<p><code>$(&#39;#my-select&#39;).multiSelect(&#39;addOption&#39;,{value: &#39;test&#39;,text: &#39;test&#39;,index: 0,nested: &#39;&#39;optgroup_label})</code>  </p>
+<h2 id="键盘操作"><a href="#键盘操作" class="headerlink" title="键盘操作"></a>键盘操作</h2><p><img src="/img/keyboard.png" alt="键盘键">  </p>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p><img src="/img/shili.png" alt="实例">  </p>
+<p>引入CSS<br><code>&lt;link href=&quot;assets/jquery-multiselect/multi-select.css&quot; media=&quot;screen&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;</code><br>引入JS<br><code>&lt;script type=&quot;text/javascript&quot; src=&quot;assets/jquery.min.js&quot;&gt;&lt;/script&gt;</code><br><code>&lt;script type=&quot;text/javascript&quot; src=&quot;assets/jquery-multiselect/jquery.multi-select.js&quot;&gt;&lt;/script&gt;</code></p>
+<p>HTML</p>
+<p><img src="/img/mulitSelectHtml1.png" alt="html">  </p>
+<p><img src="/img/mulitSelect_js_yufa.png" alt="js语法">  </p>
+<p><img src="/img/mulitSelect_js_yufa_02.png" alt="js语法02">  </p>
+<p><img src="/img/mulitSelect_js_yufa_03.png" alt="js语法03">  </p>
+<p><img src="/img/mulitSelect_js_yufa_04.png" alt="js语法04">  </p>
+<p><img src="/img/mulitSelect_js_yufa_05.png" alt="js语法05">  </p>
+<p><img src="/img/mulitSelect_js_yufa_06.png" alt="js语法06"></p>
+]]></content>
+      <categories>
+        <category>jquery</category>
+      </categories>
+      <tags>
+        <tag>jquery-multiselect</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>vue组件通信方式</title>
     <url>/2018/06/03/vue-data-communication/</url>
     <content><![CDATA[<h1 id="vue数据通信"><a href="#vue数据通信" class="headerlink" title="vue数据通信"></a>vue数据通信</h1><p>vue中数据通信的方式有很多种，用于处理不同情形下的数据传递。分为:</p>
@@ -228,124 +346,6 @@ export default {
       <tags>
         <tag>vue</tag>
         <tag>组件通信</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>jquery-multiselect用法实例</title>
-    <url>/2018/05/08/jquery-multiselect/</url>
-    <content><![CDATA[<h1 id="Jquery-multiselect插件使用文档"><a href="#Jquery-multiselect插件使用文档" class="headerlink" title="Jquery-multiselect插件使用文档"></a>Jquery-multiselect插件使用文档</h1><h2 id="组件介绍"><a href="#组件介绍" class="headerlink" title="组件介绍"></a>组件介绍</h2><blockquote>
-<p>替换标准的<code>&lt;select&gt;</code>(含有multiple属性的select标签)的一套交互友好的组件。</p>
-</blockquote>
-<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ul>
-<li>支持键盘操作</li>
-<li>提供一些回调函数</li>
-<li>CSS可完全定制化</li>
-<li>依赖jquery1.8以上版本  </li>
-</ul>
-<h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><pre><code class="html">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;multiselect&lt;/title&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;!-- 引入CSS --&gt;
-    &lt;link href=&quot;assets/jquery-multiselect/multi-select.css&quot; media=&quot;screen&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
-&lt;/head&gt;
-&lt;body&gt;    
-    &lt;!-- 定义select及选择器 --&gt;
-    &lt;select multiple=&quot;multiple&quot; id=&quot;my-select&quot; name=&quot;my-select&quot;&gt;
-        &lt;option value=&#39;a&#39;&gt;a&lt;/option&gt;
-        &lt;option value=&#39;b&#39;&gt;b&lt;/option&gt;
-        &lt;option value=&#39;c&#39;&gt;c&lt;/option&gt;
-        &lt;option value=&#39;d&#39;&gt;d&lt;/option&gt;
-        &lt;option value=&#39;e&#39;&gt;e&lt;/option&gt;
-        &lt;option value=&#39;f&#39;&gt;f&lt;/option&gt;
-        &lt;option value=&#39;g&#39;&gt;g&lt;/option&gt;
-        &lt;option value=&#39;h&#39;&gt;h&lt;/option&gt;
-        &lt;option value=&#39;i&#39;&gt;i&lt;/option&gt;
-        &lt;option value=&#39;j&#39;&gt;j&lt;/option&gt;
-    &lt;/select&gt;
-    &lt;/div&gt;
-    &lt;!-- 引入jquery，版本不低于1.8 --&gt;
-    &lt;script type=&quot;text/javascript&quot; src=&quot;assets/jquery.min.js&quot;&gt;&lt;/script&gt;
-    &lt;!-- 引入插件核心JS --&gt;
-    &lt;script type=&quot;text/javascript&quot; src=&quot;assets/jquery-multiselect/jquery.multi-select.js&quot;&gt;&lt;/script&gt;
-    &lt;script type=&quot;text/javascript&quot;&gt;
-        $(&#39;#my-select&#39;).multiSelect(); //初始化基本用法
-    &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-<h2 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h2><p><strong>afterInit</strong><br>类型:<code>function</code><br>默认值：<code>function(container){}</code><br>初始化multiSelect后执行的方法。</p>
-<p><strong>afterSelect</strong><br>类型:<code>function</code><br>默认值：<code>function(values){}</code><br>选中选项后执行的方法。</p>
-<p><strong>afterDeselect</strong><br>类型:<code>function</code><br>默认值：<code>function(values){}</code><br>取消选中后执行的方法。</p>
-<p><strong>selectableHeader</strong><br>类型：<code>HTML/Text</code><br>默认值：<code>null</code><br>自定义可选区域header。</p>
-<p><strong>selectableFooter</strong><br>类型：<code>HTML/Text</code><br>默认值：<code>null</code><br>自定义可选区域footer。</p>
-<p><strong>selectionHeader</strong><br>类型：<code>HTML/Text</code><br>默认值：<code>null</code><br>自定义已选区域header。</p>
-<p><strong>selectionFooter</strong><br>类型：<code>HTML/Text</code><br>默认值：<code>null</code><br>自定义已选区域footer。</p>
-<p><strong>disabledClass</strong><br>类型：<code>String</code><br>默认值： <code>disabled</code><br>禁用状态选项的css class。</p>
-<p><strong>selectableOptgroup</strong><br>类型：<code>Boolean</code><br>默认值：<code>false</code><br>为true时点击optgroup时等同于选中所有子选项。</p>
-<p><strong>keepOrder</strong><br>类型：<code>Boolean</code><br>默认值：<code>false</code><br>为true时已选区域的选项根据选中顺序排序。</p>
-<p><strong>dblClick</strong><br>类型：<code>Boolean</code><br>默认值：<code>false</code><br>为true时双击才会选中选项。</p>
-<p><strong>cssClass</strong><br>类型：<code>String</code><br>默认值：<code>&#39;&#39;</code><br>在multiselect容器（.ms-container）上添加自定义css class。</p>
-<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p><strong>.multiSelect(options)</strong><br>初始化multi-select多选插件。<br><code>$(&#39;#my-select&#39;).multiSelect({});</code></p>
-<p><strong>.multiSelect(‘select’, String|Array)</strong><br>选中匹配值的一项或多项。<br><code>$(&#39;#my-select&#39;).multiSelect(&#39;select&#39;, &#39;选项1&#39;);</code><br><code>$(&#39;#my-select&#39;).multiSelect(&#39;select&#39;,[&#39;选项1&#39;, &#39;选项3&#39;]);</code></p>
-<p><strong>.multiSelect(‘deselect’, String|Array)</strong><br>取消选中匹配值的一项或多项。<br><code>$(&#39;#my-select&#39;).multiSelect(&#39;deselect&#39;, &#39;选项2&#39;);</code><br><code>$(&#39;#my-select&#39;).multiSelect(&#39;deselect&#39;, [&#39;选项    2&#39;, &#39;选项4&#39;]);</code></p>
-<p><strong>.multiSelect(‘select_all’)</strong><br>选中所有选项。<br><code>$(&#39;#my-select&#39;).multiSelect(&#39;select_all&#39;);</code></p>
-<p><strong>.multiSelect(‘deselect_all’)</strong><br>取消选中所有选项。<br><code>$(&#39;#my-select&#39;).multiSelect(&#39;deselect_all&#39;);</code></p>
-<p><strong>.multiSelect(‘refresh’)</strong><br>刷新当前multi-select。<br><code>$(&#39;#my-select&#39;).multiSelect(&#39;refresh&#39;);</code></p>
-<p><strong>.multiSelect(‘addOption’, Hash)</strong><br>以键值对形式动态添加选项到multi-select。  </p>
-<p><img src="/img/keyvalue.png" alt="key-value">  </p>
-<p><code>$(&#39;#my-select&#39;).multiSelect(&#39;addOption&#39;,{value: &#39;test&#39;,text: &#39;test&#39;,index: 0,nested: &#39;&#39;optgroup_label})</code>  </p>
-<h2 id="键盘操作"><a href="#键盘操作" class="headerlink" title="键盘操作"></a>键盘操作</h2><p><img src="/img/keyboard.png" alt="键盘键">  </p>
-<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p><img src="/img/shili.png" alt="实例">  </p>
-<p>引入CSS<br><code>&lt;link href=&quot;assets/jquery-multiselect/multi-select.css&quot; media=&quot;screen&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;</code><br>引入JS<br><code>&lt;script type=&quot;text/javascript&quot; src=&quot;assets/jquery.min.js&quot;&gt;&lt;/script&gt;</code><br><code>&lt;script type=&quot;text/javascript&quot; src=&quot;assets/jquery-multiselect/jquery.multi-select.js&quot;&gt;&lt;/script&gt;</code></p>
-<p>HTML</p>
-<p><img src="/img/mulitSelectHtml1.png" alt="html">  </p>
-<p><img src="/img/mulitSelect_js_yufa.png" alt="js语法">  </p>
-<p><img src="/img/mulitSelect_js_yufa_02.png" alt="js语法02">  </p>
-<p><img src="/img/mulitSelect_js_yufa_03.png" alt="js语法03">  </p>
-<p><img src="/img/mulitSelect_js_yufa_04.png" alt="js语法04">  </p>
-<p><img src="/img/mulitSelect_js_yufa_05.png" alt="js语法05">  </p>
-<p><img src="/img/mulitSelect_js_yufa_06.png" alt="js语法06"></p>
-]]></content>
-      <categories>
-        <category>jquery</category>
-      </categories>
-      <tags>
-        <tag>jquery-multiselect</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript 中 call()、apply()、bind() 的用法</title>
-    <url>/2018/06/12/call-apply-bind/</url>
-    <content><![CDATA[<h1 id="JavaScript-中-call-、apply-、bind-的用法"><a href="#JavaScript-中-call-、apply-、bind-的用法" class="headerlink" title="JavaScript 中 call()、apply()、bind() 的用法"></a>JavaScript 中 call()、apply()、bind() 的用法</h1><p>其实是一个很简单的东西，认真看十分钟就从一脸懵B 到完全 理解！<br>先看明白下面： </p>
-<h2 id="例1"><a href="#例1" class="headerlink" title="例1"></a>例1</h2><p><img src="/img/call_apply_bind_1.png" alt="例1">  </p>
-<blockquote>
-<p>obj.objAge;  // 17<br>obj.myFun()  // 小张年龄 undefined</p>
-</blockquote>
-<h2 id="例2"><a href="#例2" class="headerlink" title="例2"></a>例2</h2><p><img src="/img/call_apply_bind_2.png" alt="例2"></p>
-<blockquote>
-<p>shows()  // 盲僧</p>
-</blockquote>
-<h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><p>比较一下这两者 this 的差别，第一个打印里面的 this 指向 obj，第二个全局声明的 shows() 函数 this 是 window;</p>
-<h3 id="1、call-、apply-、bind-都是用来重定义-this-这个对象的！"><a href="#1、call-、apply-、bind-都是用来重定义-this-这个对象的！" class="headerlink" title="1、call()、apply()、bind() 都是用来重定义 this 这个对象的！"></a>1、call()、apply()、bind() 都是用来重定义 this 这个对象的！</h3><p>如:<br><img src="/img/call_apply_bind_3.png" alt="图3"></p>
-<blockquote>
-<p>obj.myFun.call(db);    // 德玛年龄 99<br>obj.myFun.apply(db);　 // 德玛年龄 99<br>obj.myFun.bind(db)();  // 德玛年龄 99</p>
-</blockquote>
-<p>以上出了 bind 方法后面多了个 () 外 ，结果返回都一致！<br>由此得出结论，bind 返回的是一个新的函数，你必须调用它才会被执行。  </p>
-<h3 id="2、对比call-、bind-、-apply-传参情况下"><a href="#2、对比call-、bind-、-apply-传参情况下" class="headerlink" title="2、对比call 、bind 、 apply 传参情况下"></a>2、对比call 、bind 、 apply 传参情况下</h3><p><img src="/img/call_apply_bind_4.png" alt="图4"></p>
-<blockquote>
-<p>obj.myFun.call(db,’成都’,’上海’);　　　 // 德玛 年龄 99  来自 成都去往上海<br>obj.myFun.apply(db,[‘成都’,’上海’]);   // 德玛 年龄 99  来自 成都去往上海<br>obj.myFun.bind(db,’成都’,’上海’)();    // 德玛 年龄 99  来自 成都去往上海<br>obj.myFun.bind(db,[‘成都’,’上海’])();  // 德玛 年龄 99  来自 成都, 上海去往 undefined</p>
-</blockquote>
-<p>微妙的差距！<br>从上面四个结果不难看出:<br>call 、bind 、 apply 这三个函数的第一个参数都是 this 的指向对象，第二个参数差别就来了：<br>call 的参数是直接放进去的，第二第三第 n 个参数全都用逗号分隔，直接放到后面 <code>obj.myFun.call(db,&#39;成都&#39;, ... ,&#39;string&#39;)</code>。<br>apply 的所有参数都必须放在一个数组里面传进去 <code>obj.myFun.apply(db,[&#39;成都&#39;, ..., &#39;string&#39; ])</code>。<br>bind 除了返回是函数以外，它 的参数和 call 一样。<br>当然，三者的参数不限定是 string 类型，允许是各种类型，包括函数 、 object 等等！</p>
-<blockquote>
-<p><em>原文地址：<a href="https://www.cnblogs.com/Shd-Study/p/6560808.html" target="_blank" rel="noopener">https://www.cnblogs.com/Shd-Study/p/6560808.html</a></em></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>javascript</category>
-      </categories>
-      <tags>
-        <tag>javascript</tag>
       </tags>
   </entry>
 </search>
