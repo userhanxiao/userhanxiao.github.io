@@ -54,40 +54,6 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript 中 call()、apply()、bind() 的用法</title>
-    <url>/2018/06/12/call-apply-bind/</url>
-    <content><![CDATA[<h1 id="JavaScript-中-call-、apply-、bind-的用法"><a href="#JavaScript-中-call-、apply-、bind-的用法" class="headerlink" title="JavaScript 中 call()、apply()、bind() 的用法"></a>JavaScript 中 call()、apply()、bind() 的用法</h1><p>其实是一个很简单的东西，认真看十分钟就从一脸懵B 到完全 理解！<br>先看明白下面： </p>
-<h2 id="例1"><a href="#例1" class="headerlink" title="例1"></a>例1</h2><p><img src="/img/call_apply_bind_1.png" alt="例1">  </p>
-<blockquote>
-<p>obj.objAge;  // 17<br>obj.myFun()  // 小张年龄 undefined</p>
-</blockquote>
-<h2 id="例2"><a href="#例2" class="headerlink" title="例2"></a>例2</h2><p><img src="/img/call_apply_bind_2.png" alt="例2"></p>
-<blockquote>
-<p>shows()  // 盲僧</p>
-</blockquote>
-<h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><p>比较一下这两者 this 的差别，第一个打印里面的 this 指向 obj，第二个全局声明的 shows() 函数 this 是 window;</p>
-<h3 id="1、call-、apply-、bind-都是用来重定义-this-这个对象的！"><a href="#1、call-、apply-、bind-都是用来重定义-this-这个对象的！" class="headerlink" title="1、call()、apply()、bind() 都是用来重定义 this 这个对象的！"></a>1、call()、apply()、bind() 都是用来重定义 this 这个对象的！</h3><p>如:<br><img src="/img/call_apply_bind_3.png" alt="图3"></p>
-<blockquote>
-<p>obj.myFun.call(db);    // 德玛年龄 99<br>obj.myFun.apply(db);　 // 德玛年龄 99<br>obj.myFun.bind(db)();  // 德玛年龄 99</p>
-</blockquote>
-<p>以上出了 bind 方法后面多了个 () 外 ，结果返回都一致！<br>由此得出结论，bind 返回的是一个新的函数，你必须调用它才会被执行。  </p>
-<h3 id="2、对比call-、bind-、-apply-传参情况下"><a href="#2、对比call-、bind-、-apply-传参情况下" class="headerlink" title="2、对比call 、bind 、 apply 传参情况下"></a>2、对比call 、bind 、 apply 传参情况下</h3><p><img src="/img/call_apply_bind_4.png" alt="图4"></p>
-<blockquote>
-<p>obj.myFun.call(db,’成都’,’上海’);　　　 // 德玛 年龄 99  来自 成都去往上海<br>obj.myFun.apply(db,[‘成都’,’上海’]);   // 德玛 年龄 99  来自 成都去往上海<br>obj.myFun.bind(db,’成都’,’上海’)();    // 德玛 年龄 99  来自 成都去往上海<br>obj.myFun.bind(db,[‘成都’,’上海’])();  // 德玛 年龄 99  来自 成都, 上海去往 undefined</p>
-</blockquote>
-<p>微妙的差距！<br>从上面四个结果不难看出:<br>call 、bind 、 apply 这三个函数的第一个参数都是 this 的指向对象，第二个参数差别就来了：<br>call 的参数是直接放进去的，第二第三第 n 个参数全都用逗号分隔，直接放到后面 <code>obj.myFun.call(db,&#39;成都&#39;, ... ,&#39;string&#39;)</code>。<br>apply 的所有参数都必须放在一个数组里面传进去 <code>obj.myFun.apply(db,[&#39;成都&#39;, ..., &#39;string&#39; ])</code>。<br>bind 除了返回是函数以外，它 的参数和 call 一样。<br>当然，三者的参数不限定是 string 类型，允许是各种类型，包括函数 、 object 等等！</p>
-<blockquote>
-<p><em>原文地址：<a href="https://www.cnblogs.com/Shd-Study/p/6560808.html" target="_blank" rel="noopener">https://www.cnblogs.com/Shd-Study/p/6560808.html</a></em></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>javascript</category>
-      </categories>
-      <tags>
-        <tag>javascript</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>jquery-multiselect用法实例</title>
     <url>/2018/05/08/jquery-multiselect/</url>
     <content><![CDATA[<h1 id="Jquery-multiselect插件使用文档"><a href="#Jquery-multiselect插件使用文档" class="headerlink" title="Jquery-multiselect插件使用文档"></a>Jquery-multiselect插件使用文档</h1><h2 id="组件介绍"><a href="#组件介绍" class="headerlink" title="组件介绍"></a>组件介绍</h2><blockquote>
@@ -346,6 +312,40 @@ export default {
       <tags>
         <tag>vue</tag>
         <tag>组件通信</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript 中 call()、apply()、bind() 的用法</title>
+    <url>/2018/06/12/call-apply-bind/</url>
+    <content><![CDATA[<h1 id="JavaScript-中-call-、apply-、bind-的用法"><a href="#JavaScript-中-call-、apply-、bind-的用法" class="headerlink" title="JavaScript 中 call()、apply()、bind() 的用法"></a>JavaScript 中 call()、apply()、bind() 的用法</h1><p>其实是一个很简单的东西，认真看十分钟就从一脸懵B 到完全 理解！<br>先看明白下面： </p>
+<h2 id="例1"><a href="#例1" class="headerlink" title="例1"></a>例1</h2><p><img src="/img/call_apply_bind_1.png" alt="例1">  </p>
+<blockquote>
+<p>obj.objAge;  // 17<br>obj.myFun()  // 小张年龄 undefined</p>
+</blockquote>
+<h2 id="例2"><a href="#例2" class="headerlink" title="例2"></a>例2</h2><p><img src="/img/call_apply_bind_2.png" alt="例2"></p>
+<blockquote>
+<p>shows()  // 盲僧</p>
+</blockquote>
+<h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><p>比较一下这两者 this 的差别，第一个打印里面的 this 指向 obj，第二个全局声明的 shows() 函数 this 是 window;</p>
+<h3 id="1、call-、apply-、bind-都是用来重定义-this-这个对象的！"><a href="#1、call-、apply-、bind-都是用来重定义-this-这个对象的！" class="headerlink" title="1、call()、apply()、bind() 都是用来重定义 this 这个对象的！"></a>1、call()、apply()、bind() 都是用来重定义 this 这个对象的！</h3><p>如:<br><img src="/img/call_apply_bind_3.png" alt="图3"></p>
+<blockquote>
+<p>obj.myFun.call(db);    // 德玛年龄 99<br>obj.myFun.apply(db);　 // 德玛年龄 99<br>obj.myFun.bind(db)();  // 德玛年龄 99</p>
+</blockquote>
+<p>以上出了 bind 方法后面多了个 () 外 ，结果返回都一致！<br>由此得出结论，bind 返回的是一个新的函数，你必须调用它才会被执行。  </p>
+<h3 id="2、对比call-、bind-、-apply-传参情况下"><a href="#2、对比call-、bind-、-apply-传参情况下" class="headerlink" title="2、对比call 、bind 、 apply 传参情况下"></a>2、对比call 、bind 、 apply 传参情况下</h3><p><img src="/img/call_apply_bind_4.png" alt="图4"></p>
+<blockquote>
+<p>obj.myFun.call(db,’成都’,’上海’);　　　 // 德玛 年龄 99  来自 成都去往上海<br>obj.myFun.apply(db,[‘成都’,’上海’]);   // 德玛 年龄 99  来自 成都去往上海<br>obj.myFun.bind(db,’成都’,’上海’)();    // 德玛 年龄 99  来自 成都去往上海<br>obj.myFun.bind(db,[‘成都’,’上海’])();  // 德玛 年龄 99  来自 成都, 上海去往 undefined</p>
+</blockquote>
+<p>微妙的差距！<br>从上面四个结果不难看出:<br>call 、bind 、 apply 这三个函数的第一个参数都是 this 的指向对象，第二个参数差别就来了：<br>call 的参数是直接放进去的，第二第三第 n 个参数全都用逗号分隔，直接放到后面 <code>obj.myFun.call(db,&#39;成都&#39;, ... ,&#39;string&#39;)</code>。<br>apply 的所有参数都必须放在一个数组里面传进去 <code>obj.myFun.apply(db,[&#39;成都&#39;, ..., &#39;string&#39; ])</code>。<br>bind 除了返回是函数以外，它 的参数和 call 一样。<br>当然，三者的参数不限定是 string 类型，允许是各种类型，包括函数 、 object 等等！</p>
+<blockquote>
+<p><em>原文地址：<a href="https://www.cnblogs.com/Shd-Study/p/6560808.html" target="_blank" rel="noopener">https://www.cnblogs.com/Shd-Study/p/6560808.html</a></em></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
       </tags>
   </entry>
 </search>
